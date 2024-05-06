@@ -131,9 +131,7 @@ html {
 .newlatter-input1 {
   @apply w-[120px];
 }
-.newlatter-form button {
-  @apply bg-[#ca8a04] px-[12px] py-[6px] rounded-sm text-[#fff];
-}
+
 /*  Home-Page  */
 
 /*  About-Page  */
@@ -819,6 +817,7 @@ html {
   .mob-verticaltabs-box {
     @apply flex;
   }
+  
 }
 @media (max-width: 749px) and (min-width: 551px) {
   .mob-router-back-link-toster {
@@ -994,6 +993,9 @@ html {
   .mob-verticaltabs-box,
   .menu-verticalsidebar-hamburger-main-page {
     @apply flex;
+  }
+  .opner-btn-tabs{
+    @apply justify-center gap-2;
   }
 }
 .mobile-sidebar-tabs {
@@ -1427,6 +1429,15 @@ html {
   }
   .mob-hederverticaltabs-box {
     @apply flex;
+  }
+  .opner-btn-tabs{
+    @apply justify-center gap-1 font-normal;
+  }
+  .opner-btn-tabs button{
+    @apply px-4;
+  }
+  .hideformobile{
+    @apply !hidden;
   }
 }
 /* snaping */

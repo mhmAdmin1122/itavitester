@@ -20,6 +20,8 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseOutline } from "react-icons/io5";
 import Button from "./components/Button";
 import SocialSideBar from "./components/SocialSideBar";
+import axios from "axios";
+import { FaCloudDownloadAlt } from "react-icons/fa";
 const montserrat = Montserrat({
   weight: "400",
   subsets: ["latin"],
@@ -79,6 +81,56 @@ export default function Home() {
     document.body.removeChild(link);
   };
 
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function contactUs(ev: any) {
+    ev.preventDefault();
+    const data = {
+      email,
+      name,
+      subject,
+      message,
+    };
+
+    const response: any = await axios.post("/api/contact", data);
+    if (response.ok) {
+      alert("Form submission failed.");
+    } else {
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    }
+  }
+
+  // newsletter-api
+  const [newsEmail, setNewsEmail] = useState("");
+  const [myAlert, setMyAlert] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+
+  async function newsletter(e:any) {
+    e.preventDefault();
+    const data = {
+      email: newsEmail,
+    };
+    const response: any = await axios.post("/api/newsletter", data);
+    if (response.ok) {
+      console.log("Form submission failed.");
+    } else {
+      setNewsEmail("");
+      setMyAlert("Your subscription has been confirmed");
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 8000);
+      const audio = new Audio("/audio/notification.mp3");
+      audio.play();
+    }
+  };
+
   return (
     <div className={`relative ${montserrat.className}`}>
       <Head>
@@ -115,7 +167,7 @@ export default function Home() {
               {mobHomeTab && (
                 <div className="flex flex-col gap-2 items-end text-[10px]">
                   <div onClick={handleShowTabs}>
-                    <Link href="https://wefunder.com/itavimining">Invest</Link>
+                    <Link href="https://www.itavimining.com/#contact">Contact</Link>
                   </div>
                   <div onClick={handleShowTabs}>
                     <Link href="/Investment">Inestment Details</Link>
@@ -245,7 +297,7 @@ export default function Home() {
                 >
                   <FaSquareXTwitter />
                 </Link>
-                <Link
+                {/* <Link
                   className="text-xl btnshadow2 "
                   href="https://wefunder.com/itavimining"
                   target="blank"
@@ -255,7 +307,7 @@ export default function Home() {
                     alt="weFunder-Ico"
                     className="w-[20px] rounded-[2px]"
                   />
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
@@ -272,8 +324,8 @@ export default function Home() {
               <FaAngleRight className="right-drop-ico" />
             </Link>
             <div className="documentation-dropdown-content">
-              <Link href="https://wefunder.com/itavimining" target="blank">
-                Invest
+              <Link href="https://www.itavimining.com/#contact" target="blank">
+                Contact
               </Link>
               <Link href="/Investment">Investment Details</Link>
             </div>
@@ -373,7 +425,7 @@ export default function Home() {
           >
             <FaSquareXTwitter />
           </Link>
-          <Link
+          {/* <Link
             className="text-xl btnshadow2 "
             href="https://wefunder.com/itavimining"
             target="blank"
@@ -383,7 +435,7 @@ export default function Home() {
               alt="weFunder-Ico"
               className="w-[20px] rounded-[2px]"
             />
-          </Link>
+          </Link> */}
         </div>
       </header>
       {/* Header */}
@@ -409,9 +461,9 @@ export default function Home() {
             </div>
             <div className="btn-box-Home-Section !gap-10">
               <Button
-                url="https://wefunder.com/itavimining"
-                btnText="Invest Now"
-                btnText2="Invest"
+                url="https://www.itavimining.com/#contact"
+                btnText="Contact Us"
+                btnText2="Contact"
               />
               <Button
                 url="/Investment"
@@ -420,16 +472,18 @@ export default function Home() {
               />
             </div>
             <div className="flex flex-col items-center gap-6">
-              <form className="newlatter-form">
+              <form className="newlatter-form" onSubmit={newsletter}>
                 <div className="flex gap-3 items-center">
                   <input
                     type="text"
                     className="newlatter-input2"
                     placeholder="Email"
+                    value={newsEmail}
+                    onChange={(ev) => setNewsEmail(ev.target.value)}
                   />
                   <button
                     type="submit"
-                    className="bg-[#ca8a04] !text-[#000] px-6 py-2 !font-bold"
+                    className="bg-[#ca8a04] text-[#000] text-[12px] px-2 py-2 hover:bg-[#121212] hover:text-[#ca8a04]"
                   >
                     Get Updates
                   </button>
@@ -486,15 +540,15 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-10 flex-wrap justify-center">
               <Button
-                url="/values"
-                btnText="Our Values"
-                btnText2="Our Values"
-              />
-              <Button url="/history" btnText="History" btnText2="History" />
-              <Button
                 url="/conviction"
                 btnText="Invest With Conviction"
                 btnText2="Invest With"
+              />
+              <Button url="/history" btnText="History" btnText2="History" />
+              <Button
+                url="/values"
+                btnText="Our Values"
+                btnText2="Our Values"
               />
             </div>
           </div>
@@ -519,20 +573,10 @@ export default function Home() {
             <TfiAngleDown />
           </Link>
           <div>
-            {/* <div className="video-container">
-              <video
-                className="absolute top-0 left-0 w-full h-full object-cover z-0"
-                autoPlay
-                loop
-                muted
-              >
-                <source src="/video/dron2video.mp4" type="video/mp4" />
-              </video>
-              <div className="absolute top-0 left-0 w-full h-full object-cover z-4 bg-[#0000009a]"></div>
-            </div> */}
-
             <div className="flex items-center gap-6 relative flex-col justify-center">
-              <h2 className="shadow-text text-center">The Opportunity</h2>
+              <h2 className="shadow-text text-center flex items-center gap-2 justify-center">
+                <p className="btn-txt-desctop">The</p> <p>Opportunity</p>
+              </h2>
               <div className="flex flex-col items-center justify-center gap-4">
                 <div className="flex flex-col items-start gap-6">
                   <h3 className="numbers shadow-text">03</h3>
@@ -550,24 +594,24 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-center gap-10 flex-wrap">
                 <Button
-                  url="/reward"
-                  btnText="Opportunity Details"
-                  btnText2="Details"
-                />
-                <Button
                   url="/visionaries"
                   btnText="Visionaries"
                   btnText2="Visionaries"
                 />
                 <Button
-                  url="/resources"
-                  btnText="Scale of resources"
-                  btnText2="Resources"
+                  url="/reward"
+                  btnText="Investor Rewards"
+                  btnText2="Details"
                 />
                 <Button
                   url="/market"
                   btnText="Emerging Market"
                   btnText2="Market"
+                />
+                <Button
+                  url="/resources"
+                  btnText="Scale of Resources"
+                  btnText2="Resources"
                 />
                 <Button
                   url="/copper"
@@ -609,7 +653,12 @@ export default function Home() {
                 Investors. In the next pages you{"'"}ll find a Memorándum
                 Agreement, Pitch Deck, and Technical Report.
               </p>
-              <PPMDownloadBtn />
+              <button
+                className="bg-[#ca8a04] flex items-center gap-1 w-fit text-[#000] px-6 py-2 text-lg hover:bg-[#000] hover:text-[#ca8a04]"
+                onClick={handle1Download}
+              >
+                <FaCloudDownloadAlt className="text-xl" /> <p>PPM</p>
+              </button>
             </div>
 
             <div className="flex flex-col items-center justify-center w-full">
@@ -618,7 +667,12 @@ export default function Home() {
                 Investors. In the next pages you{"'"}ll find a Memorándum
                 Agreement, Pitch Deck, and Technical Report.
               </p>
-              <EMDDownloadBtn />
+              <button
+                className="bg-[#ca8a04] flex items-center gap-1 w-fit text-[#000] px-6 py-2 text-lg hover:bg-[#000] hover:text-[#ca8a04]"
+                onClick={handle2Download}
+              >
+                <FaCloudDownloadAlt className="text-xl" /> <p>Deck</p>
+              </button>
             </div>
 
             <div className="flex flex-col items-center justify-center w-full">
@@ -627,7 +681,12 @@ export default function Home() {
                 Investors. In the next pages you{"'"}ll find a Memorándum
                 Agreement, Pitch Deck, and Technical Report.
               </p>
-              <TRDownloadBtn />
+              <button
+                className="bg-[#ca8a04] flex items-center gap-1 w-fit text-[#000] px-6 py-2 text-lg hover:bg-[#000] hover:text-[#ca8a04]"
+                onClick={handle3Download}
+              >
+                <FaCloudDownloadAlt className="text-xl" /> <p>Report</p>
+              </button>
             </div>
           </div>
         </section>
@@ -679,32 +738,46 @@ export default function Home() {
             </div>
           </div>
 
-          <form className="flex flex-col items-center justify-start gap-4 w-[70%] text-[#000] contact-Form-Box">
+          <form
+            className="flex flex-col items-center justify-start gap-4 w-[70%] text-[#000] contact-Form-Box"
+            onSubmit={contactUs}
+          >
             <h5 className="w-full mt-[5vh] text-white text-lg">Get In Touch</h5>
             <div className="flex items-center gap-4 w-full">
               <input
                 type="text"
                 className="outline-none px-6 py-2 rounded-md w-1/2"
                 placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <input
                 type="text"
                 className="outline-none px-6 py-2 rounded-md w-1/2"
                 placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <input
               type="text"
               placeholder="Subject"
               className="outline-none px-6 py-2 rounded-md w-full"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
             />
             <textarea
               rows={4}
               cols={30}
               placeholder="Message"
               className="outline-none px-6 py-2 rounded-md w-full"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
-            <button type="submit" className="px-6 py-2 bg-[#d98700] font-bold">
+            <button
+              type="submit"
+              className="px-6 py-2 bg-[#d98700] hover:bg-[#000] hover:text-[#ca8a04]"
+            >
               Message
             </button>
           </form>
