@@ -2,32 +2,1551 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  @apply m-0 p-0 box-border;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  counter-reset: section;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+:root {
+  --Yellow-color: #ffd500;
+  --Background-color: #2b2d31;
+}
+html {
+  scroll-behavior: smooth;
+}
+/*  Header  */
+.Header {
+  @apply flex fixed items-center justify-between w-full px-[10%] max-[700px]:px-[1%] bg-none z-[100000000000];
+}
+.Drop-Navbar {
+  @apply fixed flex justify-between py-[150px] h-screen px-[10%] overflow-hidden right-0 z-[100000000] w-full text-[var(--primary-color)];
+  background: linear-gradient(to right, #d91820, #f15a24) no-repeat;
+}
+.Drop-Navbar .Buttons {
+  @apply flex gap-5 text-[40px] font-extralight text-white list-none min-[1900px]:text-[60px];
+}
+.Drop-Navbar .Header-Info {
+  @apply pr-[10%] pt-[20px] font-normal text-white text-[18px] min-[1900px]:text-[28px];
+}
+.Drop-Navbar .Header-Info .Social-Div {
+  @apply flex gap-3 items-center pt-[20px] max-[1024px]:flex-wrap;
+}
+.Header-Info .Social-Div h4 {
+  @apply font-normal text-white text-[18px] min-[1900px]:text-[28px];
+}
+.Header-Info .Social-Div .Icons {
+  @apply text-[20px] min-[1900px]:text-[32px];
+}
+/*  Header  */
+.btn-txt-desctop {
+  @apply !pt-0 !w-fit;
+}
+/*  Slider-Section  */
+.Progress-Bar {
+  @apply bg-white w-[100%] absolute;
+}
+/*  Slider-Nav  */
+.slider-container .Side-Nav {
+  @apply text-right text-white absolute right-[10%] top-[35%] z-[100000];
+}
+#Side-Nav {
+  @apply max-[800px]:hidden;
+}
+.Uper-div {
+  @apply leading-[50px];
+}
+.Uper-div h3 {
+  @apply text-[68px] font-extralight min-[1850px]:text-[85px];
+}
+.Uper-div h2 {
+  @apply text-[19px] font-semibold text-[var(--Yellow-color)] cursor-pointer min-[1850px]:text-[28px];
+}
+.Lower-div {
+  @apply leading-[30px] pt-[15%] min-[1850px]:leading-[40px];
+}
+.Lower-div p {
+  @apply cursor-pointer font-medium min-[1850px]:text-[24px];
+}
+/*  Slider-Nav  */
+/*  Slider-Section  */
+.slider-container {
+  @apply relative overflow-hidden;
+}
+.slider {
+  @apply flex;
+}
+.slider-content {
+  @apply flex transition-transform duration-700 ease-linear;
+}
+.slider-section {
+  @apply flex items-center justify-center w-screen h-screen;
+}
+.slider-button {
+  @apply absolute top-[50%] translate-y-[-50%] max-[800px]:top-[95%] bg-transparent border-none text-white text-[18px] cursor-pointer p-[10px];
+  background-color: rgba(128, 128, 128, 0.3);
+}
+.slider-button.previous {
+  @apply left-[0px] max-[800px]:left-[87%] max-[600px]:left-[84%] max-[500px]:left-[80%] max-[390px]:left-[76%];
+}
+.slider-button.next {
+  @apply right-[0px];
+}
+.slider-progress {
+  @apply h-[2px] bg-[var(--Yellow-color)] transition-all duration-700 ease-linear z-[100];
+}
+/*  Slider-Section  */
+
+/*  Home-Page  */
+.Home-Section {
+  background-image: url("../public/img/GoldSilver.jpg");
+  @apply flex flex-col items-center justify-around pb-20 pt-28 text-[#fff] text-center bg-no-repeat bg-cover;
+}
+.heading-deatilBox-home-Section h2 {
+  @apply text-5xl font-bold;
+}
+.heading-deatilBox-home-Section {
+  @apply flex-col gap-8;
+}
+.btn-box-Home-Section {
+  @apply flex-col;
+}
+.btn-box-Home-Section,
+.heading-deatilBox-home-Section {
+  @apply flex items-center gap-4;
+}
+.btn-box-Home-Section a {
+  @apply bg-[#ca8a04] px-4 py-2;
+}
+.newlatter-form {
+  @apply w-full flex flex-col gap-2 items-center justify-center flex-wrap;
+}
+.newlatter-form input {
+  @apply px-[12px] py-[6px] rounded-[2px] outline-none text-[#000];
+}
+.newlatter-input1 {
+  @apply w-[120px];
+}
+.newlatter-form button {
+  @apply bg-[#ca8a04] px-[12px] py-[6px] rounded-sm text-[#fff];
+}
+/*  Home-Page  */
+
+/*  About-Page  */
+
+/*  About-Section  */
+.About-Section {
+  @apply h-screen w-screen bg-no-repeat bg-cover px-[10%] pt-[150px] text-white relative;
+  background-image: url("../public/img/BackgroundImage-2.jpg");
+}
+.About-Box {
+  @apply absolute bottom-[15%];
+}
+.About-Section h2 {
+  @apply text-[68px] font-extralight leading-[70px] !w-full;
+}
+.About-Section .Second-div {
+  @apply flex gap-6 justify-start items-start;
+}
+.About-Section .Second-div h3 {
+  @apply text-[150px] font-thin leading-[150px] max-[651px]:text-[120px];
+}
+.About-Section .Second-div p {
+  @apply text-[16px] w-[40%] pt-[17px] max-[600px]:pr-[20px] text-gray-200;
+}
+/*  About-Section  */
+/*  Our-Value Section  */
+.Our-Value-Section {
+  @apply h-screen w-full flex;
+}
+.Our-Value-Section .Text-Box {
+  @apply bg-[#2B2D31] px-[4%] py-[10px] max-[800px]:pt-[20px] leading-[25px] flex flex-col justify-center w-full;
+}
+.Our-Value-Section .Text-Box h4 {
+  @apply text-white text-[48px] w-[90%] font-extralight leading-[50px] max-[650px]:text-[40px];
+}
+.Our-Value-Section .Text-Box p {
+  @apply text-gray-200 text-[16px] pt-[15px] w-[60%] font-normal max-[650px]:text-[40px] min-[1850px]:leading-[30px] min-[2000px]:leading-[40px];
+}
+@media (max-width: 800px) {
+  .Our-Value-Section .Text-Box p {
+    @apply w-full text-[14px] leading-[20px];
   }
+}
+/*  Our-Value Section  */
+/*  History-Section  */
+.History-Section {
+  @apply h-screen w-full relative bg-no-repeat bg-cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url("../public/img/Oppurtuinity-Image.png");
+}
+.History-Section .Text-Box {
+  @apply flex flex-col justify-center gap-[15px] z-10 h-full pt-[6%] min-[1850px]:pt-0;
+}
+.History-Section .Text-Box .Evolution {
+  @apply flex gap-[3%] px-[10%];
+}
+.History-Section .Text-Box .Evolution h4 {
+  @apply text-[var(--Yellow-color)] text-[22px] font-semibold max-[800px]:text-[18px] min-[1850px]:text-[24px] min-[2000px]:text-[28px];
+}
+.History-Section .Text-Box .Evolution p {
+  @apply text-gray-300 text-[18px] max-[425px]:text-[14px] font-normal w-[65%] max-[800px]:w-full max-[650px]:text-[16px];
+}
+/*  History-Section  */
+/*  Invest-Conviction-With Section  */
+.Invest-Con-Section {
+  @apply h-screen w-full flex;
+}
+.Invest-Con-Section .Text-Box {
+  @apply bg-[#2B2D31] pl-[4%] py-[10%] max-[450px]:pt-[0%] flex flex-col justify-center w-[50%] max-[800px]:w-full;
+}
+.Invest-Con-Section .Text-Box h4 {
+  @apply text-white text-[48px] pt-[120px] w-[90%] font-extralight leading-[50px];
+}
+.Invest-Con-Section .Text-Box p {
+  @apply text-gray-200 text-[12px] pt-[10px] pr-[10px] w-[90%] font-medium max-[1376px]:w-full max-[1376px]:pt-[5px] min-[1850px]:text-[16px];
+}
+/*  Invest-Conviction-With Section  */
+
+/*  About-Page  */
+
+/*  What-We-Do Page  */
+/*  WhatWeDo-Section  */
+.WWeDo-Section {
+  @apply h-screen w-screen bg-[#33245d] px-[10%] pt-[150px] text-white relative;
+}
+.WWeDo-Box {
+  @apply absolute bottom-[15%];
+}
+.WWeDo-Section h2 {
+  @apply text-[68px] font-extralight w-full leading-[70px] max-[651px]:text-[60px];
+}
+.WWeDo-Section .Second-div {
+  @apply flex justify-start items-start;
+}
+.WWeDo-Section .Second-div h3 {
+  @apply text-[170px] font-thin leading-[150px] max-[651px]:text-[120px];
+}
+.WWeDo-Section .Second-div p {
+  @apply text-[16px] w-[40%] pt-[17px] text-gray-200;
+}
+/*  WhatWeDo-Section  */
+/*  Visionaries Section  */
+.Visionaries-Section {
+  @apply h-screen w-screen flex bg-[#33245d] text-white relative;
+}
+.Visionaries-Section .Text-Box {
+  @apply flex flex-col justify-start w-[30%] h-full pl-[7%];
+}
+.Visionaries-Section .Text-Box h4 {
+  @apply text-white text-[48px] pt-[15px] w-[70%] font-extralight leading-[60px];
+}
+.Visionaries-Section .Text-Box p {
+  @apply text-gray-300 text-[18px] pt-[10px] font-normal leading-[25px] min-[2000px]:leading-[35px];
+}
+/*  Visionaries Section  */
+/*  ScaleRes Section  */
+.ScaleRes-Section {
+  @apply h-screen w-screen flex justify-between bg-[#33245d] text-white relative;
+}
+.ScaleRes-Section .Text-Box {
+  @apply flex flex-col justify-center w-[40%] h-full pl-[10%] max-[800px]:w-[60%]  max-[800px]:pr-[3%];
+}
+.ScaleRes-Section .Text-Box h4 {
+  @apply text-white text-[48px] pt-[30px] w-[70%] max-[650px]:w-full font-extralight leading-[50px];
+}
+.ScaleRes-Section .Text-Box p {
+  @apply text-gray-200 text-[16px] pt-[10px] font-normal leading-[25px] min-[2000px]:leading-[35px];
+}
+/*  ScaleRes Section  */
+/*  EmergingMarket Section  */
+.EmergingMarket-Section {
+  @apply h-screen w-screen flex bg-[#33245d] text-white relative;
+}
+.EmergingMarket-Section .Text-Box {
+  @apply flex flex-col justify-center w-[30%] h-full pl-[5%] max-[800px]:w-[50%];
+}
+.EmergingMarket-Section .Text-Box h4 {
+  @apply text-white text-[48px] pt-[15px] w-[70%] font-extralight leading-[60px];
+}
+.EmergingMarket-Section .Text-Box p {
+  @apply text-gray-200 text-[18px] pt-[10px] font-normal leading-[25px] min-[2000px]:leading-[35px];
+}
+/*  EmergingMarket Section  */
+/*  HugeConcentration Section  */
+.HugeConcentration-Section {
+  @apply h-screen w-screen flex justify-between bg-[#33245d] text-white relative;
+}
+.HugeConcentration-Section .Text-Box {
+  @apply flex flex-col justify-center w-[40%] h-full pl-[10%] max-[800px]:w-[60%] max-[800px]:pr-[5%];
+}
+.HugeConcentration-Section .Text-Box h4 {
+  @apply text-white text-[48px] pt-[30px] font-extralight leading-[60px] max-[800px]:text-[40px];
+}
+.HugeConcentration-Section .Text-Box p {
+  @apply text-gray-200 text-[18px] pt-[10px] font-normal leading-[25px] min-[2000px]:leading-[35px];
+}
+/*  HugeConcentration Section  */
+/*  What-We-Do Page  */
+
+/*  Team Page  */
+/*  Team-Work Section  */
+.TeamWork-Section {
+  @apply h-screen bg-no-repeat bg-cover w-screen px-[10%] pt-[150px] text-white relative;
+  background-image: url("../public/img/goldbg.webp");
+}
+.TeamWork-Box {
+  @apply absolute bottom-[20%];
+}
+.TeamWork-Section h2 {
+  @apply text-[68px] font-extralight w-[25%] leading-[70px] max-[650px]:text-[60px];
+}
+.TeamWork-Section .Second-div {
+  @apply flex gap-10 justify-start items-start;
+}
+.TeamWork-Section .Second-div h3 {
+  @apply text-[170px] font-thin leading-[150px] max-[650px]:text-[120px];
+}
+.TeamWork-Section .Second-div p {
+  @apply text-[16px] w-[40%] pt-[17px] leading-7 text-gray-200;
+}
+/*  Team-Work Section  */
+/*  Expert-Team Section  */
+.Expert-Team-Section {
+  @apply h-screen w-full flex;
+}
+.Expert-Team-Section .Text-Box {
+  @apply bg-[#37719f] pl-[3%] py-[10%] flex flex-col justify-center w-[70%];
+}
+.Expert-Team-Section .Text-Box h4 {
+  @apply text-white text-[48px] pt-[15px] w-[45%] font-extralight leading-[60px] max-[400px]:text-[40px];
+}
+.Expert-Team-Section .Text-Box p {
+  @apply text-gray-200 text-[15px] pt-[15px] w-[40%] font-medium leading-[30px] max-[800px]:w-[80%] max-[800px]:leading-[25px];
+}
+/*  Expert-Team Section  */
+/*  Celebrating-Section */
+.Celebrating-Section {
+  @apply h-screen w-full flex relative;
+}
+.Celebrating-Section .Text-Box {
+  @apply bg-[#37719f] pl-[10%] py-[10%] pt-[15%] flex flex-col justify-center  max-[800px]:w-[80%];
+}
+.Celebrating-Section .Text-Box h4 {
+  @apply text-white text-[48px] pt-[15px] w-[70%] font-extralight leading-[60px] max-[800px]:text-[40px];
+}
+.Celebrating-Section .Text-Box p {
+  @apply text-gray-200 text-[15px] pt-[15px] pr-[10px] w-[80%] font-medium leading-[30px] max-[800px]:w-full;
+}
+/*  Celebrating-Section */
+/*  Team Page  */
+/* Partner-Brand Page  */
+/*  Partner-Brand-Section */
+.Partner-Brand-Section {
+  @apply h-screen bg-no-repeat bg-cover w-screen px-[10%] pt-[150px] text-white relative;
+  background-image: url("../public/img/Partner-Brand-BG.jpg");
+}
+.Partner-Brand-Box {
+  @apply absolute bottom-[5%];
+}
+.Partner-Brand-Section h2 {
+  @apply text-[68px] font-extralight w-[25%] leading-[70px];
+}
+.Partner-Brand-Section .Second-div {
+  @apply flex gap-10 justify-start items-start;
+}
+.Partner-Brand-Section .Second-div h3 {
+  @apply text-[170px] font-thin leading-[150px];
+}
+.Partner-Brand-Section .Second-div p {
+  @apply text-[15px] w-[250px] pt-[17px] leading-7 text-gray-200;
+}
+/*  Partner-Brand-Section */
+/*  Our-Partner Section */
+.Our-Partner-Section {
+  @apply h-screen w-full flex;
+}
+.Our-Partner-Section .Text-Box {
+  @apply bg-[#33806e] pl-[5%] py-[10%] flex flex-col justify-center w-1/2;
+}
+.Our-Partner-Section .Text-Box h4 {
+  @apply text-white text-[48px] pt-[15px] w-[45%] font-extralight leading-[60px];
+}
+.Our-Partner-Section .Text-Box p {
+  @apply text-gray-200 text-[15px] pt-[15px] w-[40%] font-medium leading-[30px];
+}
+/*  Our-Partner Section */
+/*  Our-Brand Section */
+.Our-Brand-Section {
+  @apply h-screen w-full flex relative;
+}
+.Our-Brand-Section .Text-Box {
+  @apply bg-[#33806e] pl-[15%] py-[10%] pt-[15%] flex flex-col justify-center w-[50%];
+}
+.Our-Brand-Section .Text-Box .heading {
+  @apply text-white text-[48px] pt-[15px] w-[50%] font-extralight leading-[60px];
+}
+.Our-Brand-Section .Text-Box > p {
+  @apply text-gray-200 text-[15px] pt-[15px] w-[60%] font-medium leading-[30px];
+}
+.Our-Brand-Section .Second-Text-Box h5 {
+  @apply text-[24px] text-white pt-[5%];
+}
+.Our-Brand-Section .Second-Text-Box h3 {
+  @apply text-[40px] text-white font-light;
+}
+.Our-Brand-Section .Second-Text-Box p {
+  @apply text-[15px]  text-gray-200 font-medium;
+}
+/*  Our-Brand Section */
+/*  Career-Section  */
+.Career-Section {
+  @apply h-screen bg-no-repeat bg-cover w-screen px-[10%] pt-[150px] text-white relative;
+  background-image: url("../public/img/Career-BG.jpg");
+}
+.Career-Box {
+  @apply absolute bottom-[3%];
+}
+.Career-Section h2 {
+  @apply text-[68px] font-extralight w-[25%] leading-[70px];
+}
+.Career-Section .Second-div {
+  @apply flex gap-10 justify-start items-start;
+}
+.Career-Section .Second-div h3 {
+  @apply text-[170px] font-thin leading-[150px];
+}
+.Career-Section .Second-div p {
+  @apply text-[15px] w-[280px] pt-[17px] leading-7;
+}
+/*  Career-Section  */
+/*  Our-Culture Section  */
+.Our-Culture-Section {
+  @apply h-screen w-full flex;
+}
+.Our-Culture-Section .Text-Box {
+  @apply bg-[#33806e] pl-[5%] py-[10%] flex flex-col justify-center w-[75%];
+}
+.Our-Culture-Section .Text-Box h4 {
+  @apply text-white text-[48px] pt-[15px] w-[45%] font-extralight leading-[60px];
+}
+.Our-Culture-Section .Text-Box > p {
+  @apply text-gray-200 text-[15px] pt-[15px] w-[70%] font-medium leading-[20px];
+}
+.Our-Culture-Section .Icons-Section {
+  @apply grid w-[70%] justify-items-start text-[#fff] text-[14px] gap-5 pt-[5%];
+  grid-template-columns: 30% 30% 30%;
+}
+.Icons-Section .Icon-Image {
+  @apply h-[50px] w-[50px];
+}
+/*  Our-Culture Section  */
+/*  Contact Page  */
+/*  Contact Section  */
+.Contact-Section,
+.legal-Section {
+  @apply h-screen bg-no-repeat bg-cover w-screen px-[10%] text-white relative flex items-center justify-center !bg-[#121212];
+  /* background: linear-gradient(to right, #d91820, #f15a24) no-repeat; */
+}
+.Contact-Section .Text-Box,
+.legal-Section .Text-Box {
+  @apply absolute z-40;
+}
+.Contact-Section h2,
+.legal-Section h2 {
+  @apply text-[68px] font-extralight w-full leading-[70px];
+}
+.Contact-Section .Second-div {
+  @apply flex gap-10 justify-start items-start flex-wrap;
+}
+.Contact-Section .Second-div h3 {
+  @apply text-[170px] font-thin leading-[150px];
+}
+.Contact-Section .Second-div p {
+  @apply text-[15px] w-[250px] max-[650px]:w-[90%] pt-[17px] max-[450px]:pt-[0px] leading-7 text-gray-200;
+}
+.Contact-Section .Image-Div {
+  @apply absolute right-[15%] top-[150px] max-[800px]:right-[0%];
+}
+/*  Contact Section  */
+/*  Contact-Form Section  */
+
+.Info-Div {
+  @apply w-[35%] py-[48px] px-[38px] max-[425px]:py-0 max-[425px]:h-fit max-[550px]:w-1/2 max-[1000px]:px-[19px] max-[650px]:px-[12px] h-[80vh] grid items-center;
+  background: linear-gradient(to right, #d91820, #f15a24) no-repeat;
+}
+.Info-Div > h4 {
+  @apply text-[28px] text-white font-medium max-[650px]:text-[20px] max-[850px]:text-[24px] min-[1850px]:text-[35px] min-[2050px]:text-[45px];
+}
+.Info-Div > p {
+  @apply text-[16px] text-wrap text-gray-200 max-[650px]:text-[12px] max-[850px]:text-[14px] min-[1850px]:text-[22px] min-[2050px]:text-[28px];
+}
+.Info-Div .Content {
+  @apply flex gap-5 max-[1000px]:gap-2 items-start leading-7;
+}
+.Info-Div .Content .Icon-Div {
+  @apply border border-[#ffffff7a] rounded-full p-[10px] max-[425px]:p-[3px] max-[850px]:p-[6px];
+}
+.Info-Div .Content p {
+  @apply text-[16px] text-gray-100 text-wrap max-[650px]:text-[12px] max-[850px]:text-[14px] min-[1850px]:text-[20px] min-[2050px]:text-[24px];
+}
+.Contact-Form {
+  @apply w-[100%] leading-10 text-[#000];
+}
+.Contact-Form h4 {
+  @apply text-[28px] max-[550px]:text-[24px] text-black font-medium min-[1850px]:text-[35px] min-[2050px]:text-[45px];
+}
+.Contact-Form .Input-Div {
+  @apply w-full flex gap-5 justify-around max-[550px]:flex-wrap max-[550px]:gap-0;
+}
+.Contact-Form .Input-Div input {
+  @apply focus:border-orange-200 border-b border-gray-200 outline-none font-normal pr-[15px] pt-[10px] pb-[0px] w-1/2 max-[550px]:w-full;
+}
+.Contact-Form > input {
+  @apply focus:border-orange-200 border-b border-gray-200 outline-none font-normal pr-[15px] pt-[10px] pb-[0px] w-full;
+}
+.Contact-Form > textarea {
+  @apply focus:border-orange-200 border-b border-gray-200 outline-none font-normal w-full pr-[15px] pt-[10px] pb-[0px];
+}
+
+/*  Contact-Form Section  */
+/*  FAQs Section  */
+.FAQ-Main-Section {
+  @apply pt-[100px] min-[1350px]:pt-[30px] min-[1650px]:pt-[60px] h-screen bg-[#fff] flex justify-between gap-[10%] px-[8%] overflow-hidden max-[1025px]:flex-col max-[1025px]:items-center max-[1280px]:overflow-auto;
+}
+.FAQ-Section {
+  @apply w-[640px] mt-[10%] max-[800px]:mt-[10%]  max-[800px]:w-[95%] max-[500px]:w-full max-[1025px]:mt-0 mx-auto bg-[#f9b79f] h-fit rounded-[10px] max-[1200px]:w-[720px] min-[1850px]:w-[700px] min-[2000px]:w-[820px] min-[2300px]:mt-[10%];
+}
+.FAQ-Section-box {
+  @apply py-[4px] px-[5px] select-none text-[#fff] border-b-[2px] border-[#fff];
+}
+.FAQ-Section-box .answer-question {
+  @apply text-[#2B2D31] flex items-center gap-[10px] justify-between cursor-pointer px-[5px];
+}
+.menu-sidebar-hamburger,
+.btn-txt-mob {
+  @apply hidden;
+}
+.Home-Section .heading p {
+  @apply pt-0;
+}
+.btn-image-proj {
+  @apply justify-center;
+}
+/*  FAQs Section  */
+/*  Contact Page  */
+
+/* Dropdown Box */
+
+.about-dropbtn,
+.opportunity-dropbtn,
+.documentation-dropbtn,
+.legal-dropbtn {
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+
+.about-dropdown,
+.opportunity-dropdown,
+.documentation-dropdown,
+.legal-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.about-dropdown-content,
+.opportunity-dropdown-content,
+.documentation-dropdown-content,
+.legal-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #121212;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-size: 12px;
+}
+
+.about-dropdown-content a,
+.opportunity-dropdown-content a,
+.documentation-dropdown-content a,
+.legal-dropdown-content a,
+.documentation-dropdown-content div {
+  color: #f1f1f1;
+  padding: 6px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.about-dropdown-content a:hover,
+.opportunity-dropdown-content a:hover,
+.documentation-dropdown-content a:hover,
+.legal-dropdown-content a:hover,
+.documentation-dropdown-content div:hover {
+  background-color: #0000009a;
+}
+
+.about-dropdown:hover .about-dropdown-content,
+.opportunity-dropdown:hover .opportunity-dropdown-content,
+.documentation-dropdown:hover .documentation-dropdown-content,
+.legal-dropdown:hover .legal-dropdown-content {
+  display: block;
+}
+.about-dropbtn .right-drop-ico,
+.opportunity-dropbtn .right-drop-ico,
+.documentation-dropbtn .right-drop-ico,
+.legal-dropbtn .right-drop-ico {
+  @apply hidden;
+}
+.about-dropbtn:hover .right-drop-ico,
+.opportunity-dropbtn:hover .right-drop-ico,
+.documentation-dropbtn:hover .right-drop-ico,
+.legal-dropbtn:hover .right-drop-ico {
+  @apply flex;
+}
+.about-dropbtn:hover .down-drop-ico,
+.opportunity-dropbtn:hover .down-drop-ico,
+.documentation-dropbtn:hover .down-drop-ico,
+.legal-dropbtn:hover .down-drop-ico {
+  @apply hidden;
+}
+.forlaptop-ico {
+  @apply hidden;
+}
+/*  Responsive Media Queries  */
+@media (min-width: 1850px) {
+  .Home-Section .heading p,
+  .About-Section .Second-div p,
+  .Our-Value-Section .Text-Box p,
+  .History-Section .Text-Box .Evolution p,
+  .WWeDo-Section .Second-div p,
+  .Visionaries-Section .Text-Box p,
+  .ScaleRes-Section .Text-Box p,
+  .EmergingMarket-Section .Text-Box p,
+  .HugeConcentration-Section .Text-Box p,
+  .TeamWork-Section .Second-div p,
+  .Expert-Team-Section .Text-Box p,
+  .Celebrating-Section .Text-Box p,
+  .Partner-Brand-Section .Second-div p,
+  .Our-Partner-Section .Text-Box p,
+  .Our-Brand-Section .Text-Box > p,
+  .Our-Brand-Section .Second-Text-Box p,
+  .Career-Section .Second-div p,
+  .Our-Culture-Section .Text-Box > p,
+  .Contact-Section .Second-div p {
+    @apply text-[20px];
+  }
+  .About-Section .Second-div p,
+  .WWeDo-Section .Second-div p,
+  .TeamWork-Section .Second-div p,
+  .Partner-Brand-Section .Second-div p,
+  .Career-Section .Second-div p,
+  .Contact-Section .Second-div p {
+    @apply w-[450px];
+  }
+}
+@media (min-width: 2000px) {
+  .Home-Section .heading p,
+  .About-Section .Second-div p,
+  .Our-Value-Section .Text-Box p,
+  .History-Section .Text-Box .Evolution p,
+  .Invest-Con-Section .Text-Box p,
+  .Work-Place-Section .Text-Box p,
+  .WWeDo-Section .Second-div p,
+  .Visionaries-Section .Text-Box p,
+  .ScaleRes-Section .Text-Box p,
+  .EmergingMarket-Section .Text-Box p,
+  .HugeConcentration-Section .Text-Box p,
+  .TeamWork-Section .Second-div p,
+  .Expert-Team-Section .Text-Box p,
+  .Celebrating-Section .Text-Box p,
+  .Partner-Brand-Section .Second-div p,
+  .Our-Partner-Section .Text-Box p,
+  .Our-Brand-Section .Text-Box > p,
+  .Our-Brand-Section .Second-Text-Box p,
+  .Career-Section .Second-div p,
+  .Our-Culture-Section .Text-Box > p,
+  .Contact-Section .Second-div p {
+    @apply text-[24px];
+  }
+}
+
+.shadow-text {
+  text-shadow: 2px 2px 2px #000;
+}
+.mob-router-back-link-toster {
+  @apply block bottom-10 -left-2 text-lg;
+}
+.menu-sidebar-hamburger-main-page,
+.mobile-sidebar-tabs-main {
+  @apply hidden;
+}
+/* all heading and there spaces [Home page] */
+.heading-deatilBox-home-Section {
+  @apply justify-start;
+}
+.about-box-container,
+.WWeDo-Section,
+#documentation,
+.Contact-Section {
+  @apply pt-[7rem];
+}
+.Contact-Section {
+  @apply justify-start;
+}
+.heading-deatilBox-home-Section h2,
+#opportunity h2,
+.contact-content-container h2 {
+  font-size: 60px;
+}
+.menu-verticalsidebar-hamburger-main-page,
+.mob-verticaltabs-box {
+  @apply hidden;
+}
+.mob-hederverticaltabs-box{
+  @apply hidden;
+}
+@media (max-width: 980px) and (min-width: 750px) {
+  .mob-router-back-link-toster {
+    @apply block bottom-10 -left-2 text-lg;
+  }
+  .mob-hederverticaltabs-box {
+    @apply hidden;
+  }
+  .menu-sidebar-hamburger-main-page,
+  .mobile-sidebar-tabs-main {
+    @apply hidden;
+  }
+  .About-Section h2 {
+    @apply w-full;
+  }
+  .pagelayout {
+    @apply gap-4;
+  }
+  .Contact-Form {
+    @apply px-3 py-3;
+  }
+  .Contact-Form h4 {
+    @apply text-4xl;
+  }
+  .Contact-Form div button {
+    @apply text-[12px] px-4 py-0;
+  }
+  .contactdetails {
+    @apply flex-col gap-2 mt-4;
+  }
+  .addressbox {
+    @apply gap-[0.5rem];
+  }
+  .addressbox svg {
+    @apply text-2xl;
+  }
+  .navbar {
+    @apply px-[20px];
+  }
+  .main-tabs,
+  .socail-icons-screen p {
+    @apply text-[12px];
+  }
+  .logo-main-page .logo-pic {
+    @apply !w-[120px];
+  }
+  .home-vector-box {
+    @apply hidden;
+  }
+  .btn-txt-desctop {
+    @apply !pt-0 !w-fit;
+  }
+  .WWeDo-Section h2 {
+    width: 100%;
+    font-size: 62px;
+    font-weight: 200;
+    line-height: 54px;
+  }
+  .listbox li {
+    @apply text-[13px];
+  }
+  .investorReward-Section {
+    @apply pt-[65px];
+  }
+  .social-icons-notfor-laptop,
+  .mobile-sidebar-tabs {
+    @apply hidden;
+  }
+  .about-dropbtn,
+  .opportunity-dropbtn,
+  .documentation-dropbtn,
+  .legal-dropbtn,
+  .contact-btn-tabs {
+    color: white;
+    font-size: 14px;
+    border: none;
+  }
+  .forlaptop-ico {
+    @apply block;
+  }
+  .sidebar-tabs a {
+    @apply text-end;
+  }
+
+  .heading-deatilBox-home-Section {
+    @apply justify-start;
+  }
+  .about-box-container,
+  .WWeDo-Section,
+  #documentation,
+  .Contact-Section {
+    @apply pt-[7rem];
+  }
+  .Contact-Section {
+    @apply justify-start;
+  }
+  .heading-deatilBox-home-Section h2,
+  #opportunity h2,
+  .contact-content-container h2 {
+    font-size: 60px;
+  }
+  .fornot-moblaptab-navbar {
+    @apply hidden;
+  }
+  .menu-verticalsidebar-hamburger-main-page,
+  .mob-verticaltabs-box {
+    @apply flex;
+  }
+}
+@media (max-width: 749px) and (min-width: 551px) {
+  .mob-router-back-link-toster {
+    @apply block bottom-10 -left-2 text-lg;
+  }
+  .mob-hederverticaltabs-box {
+    @apply hidden;
+  }
+  .menu-sidebar-hamburger-main-page,
+  .mobile-sidebar-tabs {
+    @apply block;
+  }
+  .pagelayout {
+    @apply gap-4;
+  }
+  .Contact-Form {
+    @apply px-3 py-3;
+  }
+  .Contact-Form h4 {
+    @apply text-4xl;
+  }
+  .Contact-Form div button {
+    @apply text-[12px] px-4 py-0;
+  }
+  .contactdetails {
+    @apply flex-col gap-2 mt-4;
+  }
+  .addressbox {
+    @apply gap-[0.5rem];
+  }
+  .addressbox svg {
+    @apply text-2xl;
+  }
+  .sidebar-tabs {
+    @apply text-[9px] pr-[2px];
+  }
+  .btn-txt-desctop {
+    @apply hidden;
+  }
+  .btn-txt-mob {
+    @apply flex;
+  }
+  .btn-image-proj {
+    @apply justify-center;
+  }
+  .btn-image-proj img {
+    @apply w-[240px] h-[240px];
+  }
+  /* Header */
+  .socail-icons-screen,
+  .main-tabs,
+  .btn-txt-desctop,
+  .home-vector-box {
+    @apply hidden;
+  }
+  .navbar {
+    @apply px-4;
+  }
+  .menu-sidebar-hamburger {
+    @apply hidden;
+  }
+  /* Header */
+  /* Home Section */
+  .Home-Section .heading h2,
+  .About-Section h2,
+  .WWeDo-Section h2,
+  .TeamWork-Section h2,
+  .Contact-Section h2,
+  .investorReward-Section div h4,
+  .Visionaries-Section .Text-Box h4,
+  .ScaleRes-Section .Text-Box h4,
+  .EmergingMarket-Section .Text-Box h4,
+  .Expert-Team-Section .Text-Box h4,
+  .Celebrating-Section .Text-Box h4,
+  .Expert-Team-Section .Text-Box h4 {
+    font-size: 60px;
+    font-weight: 200;
+    line-height: 52px;
+  }
+  .About-Section h2 {
+    @apply w-full;
+  }
+  .newlatter-input2 {
+    @apply w-[150px];
+  }
+  .Expert-Team-Section .Text-Box h4 {
+    @apply w-full;
+  }
+  .newlatter-form button {
+    @apply text-[16px];
+  }
+  .WWeDo-Section .Second-div h3,
+  .About-Section .Second-div h3,
+  .TeamWork-Section .Second-div h3,
+  .Contact-Section .Second-div h3 {
+    font-size: 6rem !important;
+  }
+  .About-Section .Second-div p,
+  .WWeDo-Section .Second-div p,
+  .TeamWork-Section .Second-div p,
+  .Contact-Section .Second-div p,
+  .Our-Value-Section .Text-Box p,
+  .investorReward-Section div p,
+  .Visionaries-Section .Text-Box p,
+  .ScaleRes-Section .Text-Box p,
+  .EmergingMarket-Section .Text-Box p,
+  .HugeConcentration-Section .Text-Box p,
+  .History-Section .Text-Box .Evolution p,
+  .Invest-Con-Section .Text-Box p,
+  .Expert-Team-Section .Text-Box p,
+  .Celebrating-Section .Text-Box p {
+    width: 260px !important;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .History-Section .Text-Box .Evolution p,
+  .Expert-Team-Section .Text-Box p,
+  .Celebrating-Section .Text-Box p {
+    @apply !w-full pr-[8px];
+  }
+  .visionaries-image {
+    width: 140px !important;
+    display: flex;
+  }
+  .Visionaries-Section .Text-Box {
+    @apply gap-[2px];
+  }
+  .listbox li {
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .WWeDo-Section .Second-div,
+  .TeamWork-Section .Second-div,
+  .Contact-Section .Second-div {
+    @apply gap-[2px];
+  }
+
+  /* Home Section */
+  .mobile-sidebar-tabs {
+    @apply hidden;
+  }
+  .mobile-sidebar-tabs-main {
+    @apply block pt-[54px];
+  }
+  .heading-deatilBox-home-Section h2 {
+    font-size: 60px;
+    padding-bottom: 2px;
+  }
+  .heading-deatilBox-home-Section {
+    @apply justify-start;
+  }
+  .about-us-para,
+  .opportunity-para {
+    @apply w-full;
+  }
+  .about-box-container,
+  .WWeDo-Section,
+  #documentation {
+    @apply pt-[7rem];
+  }
+  #documentation h2 {
+    word-wrap: break-word;
+  }
+  .Contact-Section {
+    @apply justify-start pt-[7rem];
+  }
+  .contact-Form-Box {
+    @apply w-[90%];
+  }
+  .fornot-moblaptab-navbar {
+    @apply hidden;
+  }
+  .mob-verticaltabs-box,
+  .menu-verticalsidebar-hamburger-main-page {
+    @apply flex;
+  }
+}
+.mobile-sidebar-tabs {
+  @apply hidden;
+}
+.WWeDo-Section .Second-div h3,
+.About-Section .Second-div h3,
+.TeamWork-Section .Second-div h3,
+.Contact-Section .Second-div h3 {
+  @apply text-9xl;
+}
+
+@media (max-width: 550px) and (min-width: 160px) {
+  .Home-Section .heading h2 {
+    font-size: 39px !important;
+    font-weight: 200 !important;
+    line-height: 38px !important;
+  }
+  .menu-sidebar-hamburger-main-page,
+  .mobile-sidebar-tabs {
+    @apply block;
+  }
+  .About-Section h2 {
+    @apply w-full;
+  }
+  .home-vector-box {
+    @apply hidden;
+  }
+  .newlatter-form button {
+    font-size: 13px;
+  }
+  .newlatter-input1 {
+    @apply w-[100px];
+  }
+  .newlatter-input2 {
+    @apply w-[130px];
+  }
+  .About-Section {
+    padding-top: 64px;
+  }
+  .About-Section .Second-div,
+  .WWeDo-Section .Second-div,
+  .TeamWork-Section .Second-div {
+    display: grid;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+  .About-Section .Second-div h3,
+  .WWeDo-Section .Second-div h3,
+  .TeamWork-Section .Second-div h3,
+  .Contact-Section .Second-div h3 {
+    display: none !important;
+  }
+  .home-para {
+    @apply text-[12px];
+  }
+  .Home-Section .heading {
+    z-index: 10;
+    width: 90%;
+  }
+  .About-Section .Second-div p {
+    padding-top: 2px;
+    font-size: 14px;
+  }
+  .WWeDo-Section h2,
+  .About-content-container h2,
+  .heading-deatilBox-home-Section h2 {
+    font-size: 40px;
+    font-weight: 100;
+    line-height: 30px;
+    margin-bottom: 12px;
+  }
+  .TeamWork-Section h2 {
+    width: 100%;
+    font-size: 40px;
+    font-weight: 200;
+    line-height: 70px;
+  }
+  .Our-Value-Section div img,
+  .Invest-Con-Section .imgebox,
+  .Visionaries-Section .imagebox,
+  .ScaleRes-Section .imagebox,
+  .EmergingMarket-Section .imagebox,
+  .HugeConcentration-Section .imagebox,
+  .Expert-Team-Section .imagebox,
+  .Celebrating-Section .imagebox {
+    display: none;
+  }
+  .History-Section .Text-Box .Evolution p {
+    width: 100%;
+    font-size: 9px;
+    font-weight: 400;
+  }
+  .History-Section .Text-Box .Evolution h4 {
+    font-size: 13px;
+  }
+  .History-Section .Text-Box {
+    gap: 11px;
+  }
+  .Visionaries-Section .Text-Box,
+  .ScaleRes-Section .Text-Box,
+  .Expert-Team-Section .Text-Box,
+  .EmergingMarket-Section .Text-Box,
+  .Celebrating-Section .Text-Box,
+  .HugeConcentration-Section .Text-Box {
+    width: 100% !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  .Visionaries-Section .Text-Box p,
+  .ScaleRes-Section .Text-Box p,
+  .Expert-Team-Section .Text-Box p {
+    line-height: 20px !important;
+    font-size: 12px;
+  }
+  .Expert-Team-Section .Text-Box p {
+    width: 100%;
+  }
+  .investorReward-Section {
+    @apply px-[30px] py-[20px];
+  }
+  .investorReward-Section .Text-Box h4 {
+    @apply text-3xl;
+  }
+  .investorReward-Section .Text-Box .listbox {
+    @apply w-full;
+  }
+  .investorReward-Section .Text-Box .listbox li {
+    @apply text-[14px] max-[650px]:text-[12px];
+  }
+  .Header a img {
+    @apply !w-[100px] !h-[100px];
+  }
+  .slider-button {
+    top: 86%;
+  }
+  .TeamWork-Section .Second-div p {
+    width: 90%;
+    padding-top: 17px;
+    font-size: 16px;
+    line-height: 1.75rem;
+  }
+  .Contact-Section .Second-div p {
+    font-size: 12px;
+    line-height: 1.5rem;
+  }
+  .About-Box,
+  .TeamWork-Box {
+    position: absolute;
+    bottom: 30%;
+  }
+  .Contact-Section h2,
+  .legal-heading {
+    width: 100%;
+    font-size: 40px !important;
+    font-weight: 200;
+    line-height: 70px;
+  }
+  .Contact-Section .Text-Box,
+  .WWeDo-Box {
+    position: absolute;
+    top: 26%;
+  }
+  .Visionaries-Section .Text-Box div {
+    @apply w-[230px];
+  }
+  .visionaries-image {
+    width: 162px;
+    padding-top: 60px;
+  }
+  .Visionaries-Section .Text-Box h4,
+  .Expert-Team-Section .Text-Box h4,
+  .Celebrating-Section .Text-Box h4,
+  .investorReward-Section .Text-Box h4 {
+    width: 100%;
+    padding-top: 15px;
+    font-size: 30px;
+    line-height: 16px;
+  }
+  .Expert-Team-Section .Text-Box h4,
+  .Celebrating-Section .Text-Box h4 {
+    line-height: 30px;
+  }
+  .slider-section,
+  .Home-Section {
+    height: 100%;
+  }
+  .Contact-Form-Section {
+    @apply block;
+  }
+  .Info-Div {
+    @apply w-full;
+  }
+  .hero-Box-investment h2 {
+    @apply w-full text-2xl;
+  }
+  .hero-Box-investment p {
+    @apply w-full;
+  }
+  .tg-det-btn-invpage .det-btn-invpage {
+    @apply w-[85%] gap-1 px-1 text-[16px] flex-col h-fit;
+  }
+  .sidebar-tabs {
+    @apply hidden;
+  }
+  .pagelayout {
+    @apply flex-col gap-2;
+  }
+  .side-bar-section {
+    @apply w-full flex items-center justify-between max-h-[60px] min-h-[60px] h-[60px];
+  }
+  .side-bar-section .logoBox img {
+    @apply w-[60px];
+  }
+  .menu-sidebar-hamburger {
+    @apply flex text-3xl text-white cursor-pointer;
+  }
+  .router-back-link-toster {
+    @apply hidden;
+  }
+  .mob-router-back-link-toster {
+    @apply block bottom-10 -left-2 text-lg;
+  }
+  .mob-router-back-link-toster button {
+    @apply text-lg px-1 py-1;
+  }
+  .section-page-side-box {
+    @apply w-full px-4 py-0;
+  }
+  .disclaimer-box ul,
+  .termsCondition-box ul,
+  .privacy-Policy-box ul {
+    @apply !py-2 !pl-7 !pr-0;
+  }
+  .Contact-Form {
+    @apply px-0 py-2;
+  }
+  .contactdetails {
+    @apply flex-col gap-2 mt-4;
+  }
+  .addressbox {
+    @apply gap-[0.5rem] text-[12px] pl-2;
+  }
+  .addressbox svg,
+  .contactdetails div a svg {
+    @apply text-xl;
+  }
+  .Contact-Form div button {
+    @apply text-[12px] px-4 py-0;
+  }
+  .Contact-Form h4 {
+    @apply text-[18px] leading-6;
+  }
+  .Contact-Form p {
+    @apply text-[12px] leading-3;
+  }
+  .contactdetails div a {
+    @apply text-[12px];
+  }
+  .socail-icons-screen,
+  .main-tabs,
+  .btn-txt-desctop {
+    @apply hidden;
+  }
+  .navbar {
+    @apply px-4;
+  }
+  .navbar .logo-main-page {
+    @apply w-[60px];
+  }
+  .Home-Section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding-left: 6%;
+    padding-right: 8%;
+    padding-top: 80px;
+  }
+  .btn-txt-mob,
+  .Home-Section .heading p {
+    @apply p-0;
+  }
+  .btn-txt-mob {
+    @apply flex;
+  }
+  .About-Section h2 {
+    font-size: 42px;
+    line-height: 40px;
+    margin-bottom: 12px;
+  }
+  .About-Section .Second-div p,
+  .WWeDo-Section .Second-div p {
+    width: 90%;
+    padding-top: 0px;
+    font-size: 16px;
+    text-align: justify;
+    padding-bottom: 17px;
+  }
+  .Celebrating-Section .Text-Box p,
+  .EmergingMarket-Section .Text-Box p,
+  .HugeConcentration-Section .Text-Box p {
+    width: 90% !important;
+    padding-top: 0px;
+    font-size: 11px;
+    line-height: 20px;
+    text-align: justify;
+    padding-bottom: 17px;
+  }
+  .btnshadow {
+    margin-top: 0px;
+  }
+  .Our-Value-Section .Text-Box p {
+    width: 100%;
+    font-size: 10px;
+    line-height: 20px;
+  }
+  .History-Section .Text-Box .Evolution {
+    flex-direction: column;
+  }
+  .Invest-Con-Section .Text-Box h4,
+  .ScaleRes-Section .Text-Box h4,
+  .EmergingMarket-Section .Text-Box h4,
+  .HugeConcentration-Section .Text-Box h4 {
+    padding-top: 45px;
+    width: 90%;
+    font-size: 30px;
+    line-height: 28px;
+  }
+  .Invest-Con-Section .Text-Box p {
+    font-size: 11px;
+  }
+  .btn-design-top {
+    @apply right-[45%] !important;
+  }
+  .btn-design-bottom {
+    @apply right-[45%] !important;
+  }
+  .carousal-body {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+  .details-handle-box,
+  .trigerring-btn-box {
+    @apply px-[10px] !important;
+  }
+  .opner-btn-tabs {
+    @apply w-full !important;
+  }
+  .trigerring-btn-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .text-shower-box {
+    @apply px-[20px];
+  }
+  .btn-txt-mob {
+    @apply !pb-0 !w-fit !text-[16px] !px-0;
+  }
+  .legal-para {
+    @apply w-full;
+  }
+  .legal-number,
+  .contact-number,
+  .not-for-mob {
+    @apply hidden;
+  }
+  .contact-content-box {
+    @apply flex-col;
+  }
+  .contact-content-box-para,
+  .contact-content-container,
+  .contact-Form-Box {
+    @apply w-full;
+  }
+  .contact-content-box-para,
+  .contact-para {
+    @apply py-0 !important;
+  }
+  .Contact-Section .Text-Box {
+    top: 12% !important;
+    gap: 0px !important;
+  }
+  .About-Box {
+    position: absolute;
+    bottom: 15%;
+  }
+  .about-us-para,
+  .opportunity-para,
+  .documentation-para {
+    @apply w-full;
+  }
+  .documentaion-heading {
+    @apply text-[40px];
+  }
+  .mobile-sidebar-tabs-main {
+    @apply block;
+  }
+  #documentation {
+    @apply pt-16;
+  }
+  .contact-content-box {
+    @apply pt-4;
+  }
+  .heading-deatilBox-home-Section,
+  .Contact-Section {
+    @apply justify-start;
+  }
+  .about-box-container,
+  .WWeDo-Section,
+  #documentation {
+    @apply pt-[5rem];
+  }
+  .Contact-Section {
+    @apply pt-[4rem];
+  }
+  .Contact-Section h2 {
+    @apply pb-[14px];
+  }
+  .WWeDo-Section h2 {
+    @apply mb-0;
+  }
+  .fornot-moblaptab-navbar {
+    @apply hidden;
+  }
+  .mob-verticaltabs-box,
+  .menu-verticalsidebar-hamburger-main-page {
+    @apply hidden;
+  }
+  .mob-hederverticaltabs-box {
+    @apply flex;
+  }
+}
+/* snaping */
+.conatiner-box {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+
+.sections {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+.WWeDo-Section,
+.Visionaries-Section,
+.EmergingMarket-Section,
+.Expert-Team-Section .Text-Box,
+.Contact-Section,
+.side-bar-section {
+  background: #121212 !important;
+}
+.investorReward-Section,
+.ScaleRes-Section,
+.HugeConcentration-Section,
+.Celebrating-Section .Text-Box {
+  background-image: linear-gradient(110deg, red, gold) !important;
+}
+
+.logo-pic-side,
+.logo-pic {
+  filter: drop-shadow(4px 2px 0.1rem #000);
+}
+
+.section-page-side-box::-webkit-scrollbar {
+  width: 2px;
+}
+
+.sidebar-tabs a {
+  text-transform: uppercase;
+}
+
+::selection {
+  background: #ca8a04;
+  color: #000;
+}
+
+.carousal-head {
+  @apply text-[#000] flex items-center justify-between text-lg gap-4;
+}
+.carousal-body {
+  @apply flex flex-col gap-4 w-full pl-[30px] pr-[70px];
+}
+.carousal-deatail {
+  @apply text-[14px] text-[#000] pr-[40px] text-justify;
+}
+.mask1 {
+  -webkit-mask-image: url(/img/contactText.png);
+  mask-image: url(/img/contactText.png);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.disclaimer-box,
+.termsCondition-box,
+.privacy-Policy-box {
+  @apply flex flex-col gap-4;
+}
+.disclaimer-box ul,
+.termsCondition-box ul,
+.privacy-Policy-box ul {
+  @apply list-disc pl-10 pr-[60px] py-5;
+}
+
+.disclaimer-box h2,
+.termsCondition-box h3,
+.termsCondition-box h2,
+.privacy-Policy-box h2 {
+  @apply text-lg font-bold;
+}
+.disclaimer-box p a,
+.termsCondition-box p a,
+.privacy-Policy-box p a {
+  @apply text-blue-500 font-medium hover:text-blue-600 hover:underline;
+}
+.termsCondition-box h3::before {
+  counter-increment: section;
+  content: counter(section) ". ";
+}
+.btn-design-top {
+  @apply right-[48%];
+}
+.btn-design-bottom {
+  @apply right-[48%];
+}
+.btn-design-right {
+  @apply top-[48%] left-0;
+}
+.btn-design-left {
+  @apply top-[48%] right-0;
+}
+.btn-design {
+  @apply bg-[#000000] p-2 text-white text-xl opacity-30 hover:opacity-85;
+}
+.btnshadow {
+  margin-top: 15px;
+  /* box-shadow: 2px 2px 32px rgba(9, 9, 9, 0.7); */
+  border: 2px solid #e6c407;
+}
+
+.btnshadow2 {
+  filter: drop-shadow(2px 2px 2px #000);
+}
+
+.TeamWork-Section {
+  @apply h-screen bg-no-repeat bg-cover w-screen px-[10%] pt-[150px] text-white relative;
+  background-image: linear-gradient(rgba(0, 0, 1, 0.7), rgba(0, 0, 1, 0.7)),
+    url("../public/img/goldbg.webp");
+}
+
+.numbers {
+  @apply !hidden;
 }
